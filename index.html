@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Sree ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffd1dc;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fade 0.5s ease;
+    }
+
+    @keyframes fade {
+      from {opacity:0; transform:translate(-50%,-40%);}
+      to {opacity:1; transform:translate(-50%,-50%);}
+    }
+
+    button {
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(45deg,#9b59b6,#ff6ec4);
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+      font-weight: bold;
+    }
+
+    #no {
+      position: absolute;
+    }
+
+    .heart {
+      font-size: 45px;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.2);}
+    }
+
+    .progress {
+      width: 220px;
+      height: 10px;
+      background: #eee;
+      border-radius: 10px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: #ff4d88;
+    }
+
+    input {
+      padding:10px;
+      border-radius:15px;
+      border:1px solid #ddd;
+      width:80%;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+
+// ❤️ LOADING
+let progress = 0;
+document.getElementById("app").innerHTML = `
+<div class="center">
+  <div class="heart">💗</div>
+  <p>Take a deep breath, my love...<br>A special surprise awaits you...</p>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+`;
+
+let load = setInterval(()=>{
+  progress += 4;
+  document.getElementById("bar").style.width = progress + "%";
+
+  if(progress >= 100){
+    clearInterval(load);
+    intro();
+  }
+},100);
+
+// 💌 INTRO
+function intro(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h3>At first, I want to ask you something before we go ahead...</h3>
+    <button onclick="message()">Click here to know</button>
+  </div>
+  `;
+}
+
+// 💖 MESSAGE
+function message(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h2>A Special Message</h2>
+    <p style="font-size:14px;text-align:left;">
+    Every smile, every moment we've shared has built something beautiful 💖  
+    You are my favorite part of every day ❤️
+    </p>
+    <button onclick="proposal()">Next 👉</button>
+  </div>
+  `;
+}
+
+// 💍 PROPOSAL
+function proposal(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h3>Can you be mine forever? 💖</h3>
+    <button onclick="yes()">Yesss</button>
+    <button id="no" onmouseover="moveNo()">Nooo</button>
+  </div>
+  `;
+}
+
+// ❌ NO ESCAPE
+function moveNo(){
+  let btn = document.getElementById("no");
+  btn.style.left = Math.random()*window.innerWidth + "px";
+  btn.style.top = Math.random()*window.innerHeight + "px";
+}
+
+// 🎉 YES
+function yes(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h2>Yesss! 💖</h2>
+    <p>You always make my heart smile! 💕</p>
+    <button onclick="secret()">More love 👉</button>
+  </div>
+  `;
+}
+
+// 🔐 SECRET
+function secret(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h3>A little secret between us! 🔐</h3>
+    <p>Enter the code to unlock more love 💕</p>
+    <input id="code" placeholder="Enter secret code ❤️"><br><br>
+    <button onclick="unlock()">Unlock</button>
+  </div>
+  `;
+}
+
+// 🔓 UNLOCK
+function unlock(){
+  let val = document.getElementById("code").value.toLowerCase();
+  if(val === "sree"){
+    finalStory();
+  } else {
+    alert("Try again 😜");
+  }
+}
+
+// ❤️ STORY PAGE
+function finalStory(){
+  document.getElementById("app").innerHTML = `
+  <div class="center">
+    <h1>Our Special Story 💖</h1>
+    <p>Hey Cutiepie, you are my sunshine ☀️</p>
+    <button onclick="end()">Open Our Story</button>
+  </div>
+  `;
+}
+
+// 💖 FINAL QUESTION
+function end(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h2>💖</h2>
+    <p>Idhe maathiri unna eppavum vachikanum ❤️</p>
+    <h3>Nee sari nu solluviya? 😌</h3>
+
+    <button onclick="finalYes()">Yes ❤️</button>
+    <button id="no" onclick="finalNo()" onmouseover="moveNoFinal()">No 😜</button>
+  </div>
+  `;
+}
+
+// ❌ FINAL NO
+function moveNoFinal(){
+  let btn = document.getElementById("no");
+  btn.style.left = Math.random()*window.innerWidth + "px";
+  btn.style.top = Math.random()*window.innerHeight + "px";
+}
+
+function finalNo(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h2>🥺</h2>
+    <p>Oh no! You can't really say no to this 💖<br>
+    You're already mine 😌<br>
+    Go back and make the right choice!</p>
+    <button onclick="end()">Go back</button>
+  </div>
+  `;
+}
+
+// ❤️ FINAL YES
+function finalYes(){
+  document.getElementById("app").innerHTML = `
+  <div class="center card">
+    <h1>I Love You Sree seekiram unga appa permission oda unna marriage pannikuran❤️</h1>
+  </div>
+  `;
+}
+
+</script>
+
+</body>
+</html>
